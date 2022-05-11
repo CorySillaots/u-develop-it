@@ -13,9 +13,9 @@ const db = mysql.createConnection(
     {
       host: 'localhost',
       // Your MySQL username,
-      user: 'csillaots@gmail.com',
+      user: 'root',
       // Your MySQL password
-      password: 'Yamaha1061!',
+      password: '',
       database: 'election'
     },
     console.log('Connected to the election database.')
@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
     message: 'Hello World'
   });
 });
+
+db.query(`SELECT * FROM candidates`, (err, rows) => {
+    console.log(rows);
+  });
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
